@@ -289,7 +289,7 @@ $channelurl1=str_replace("http://edge.metaa.tv","http://185.59.223.242",$channel
 $channelurl2=$channelurl1;
 echo $channelurl2;
 curl_close($ch);
-?>
+?>"
 plyr.setup(video);
 
 if(Hls.isSupported()) {
