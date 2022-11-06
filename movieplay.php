@@ -145,9 +145,6 @@ function videovisible() {
     document.getElementById('loading').style.display = 'none'
 }
 
-
-var url=
-
 var url="<?php
 $tem=$_REQUEST["c"];
 // $tem='/media/55041.mpg';
