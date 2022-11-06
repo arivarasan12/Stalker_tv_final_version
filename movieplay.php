@@ -1,10 +1,11 @@
+
 <html>
 <head>
-<title><?php echo $_REQUEST["c"]; ?> | LiveTV</title>
+<title>/media/407365.mpg | LiveTV</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<link rel="shortcut icon" type="image/x-icon" href="https://play-lh.googleusercontent.com/A0UZO-jMqgtkSZ29w8xUbU0g55JLBa65zZX3QpFUB9sOjz9a7kLcb3do2Sg-pHIH4w0=w240-h480">
+<link rel="shortcut icon" type="image/x-icon" href="logo.jpg">
 <script type="text/javascript" src="https://ajax.cloudflare.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script src="https://cdn.plyr.io/2.0.18/plyr.js"></script>
@@ -135,7 +136,7 @@ html {
 </div>
 
 <div id="player">
-<video  title="<?php echo $_REQUEST["c"]; ?>" id="video" style="width:100%;height:100%;"></video>
+<video  title="/media/407365.mpg" id="video" style="width:100%;height:100%;"></video>
 </div>
 <script>
   setTimeout(videovisible, 4000)
@@ -144,6 +145,8 @@ function videovisible() {
     document.getElementById('loading').style.display = 'none'
 }
 
+
+var url=
 
 var url="<?php
 $tem=$_REQUEST["c"];
@@ -286,53 +289,31 @@ $channelurl1=str_replace("http://edge.metaa.tv","http://185.59.223.242",$channel
 $channelurl2=$channelurl1;
 echo $channelurl2;
 curl_close($ch);
+?>
+plyr.setup(video);
 
-// // $channelurl3='http://185.246.209.103:9128/a1f2d8a233fbdf5b59d9e343d8ae36e6f0b59db36874678d457fdbe8a8069a293641689958e7ae7230fb6b7b20e06798fc22321c7baed67de11e717becc7bec1cea1f1c68ac2d68423bcf9dbe732f7d3ce7b256927598805db499df06cf49daf6155c53f800ec3d6409e51eaed418e964d05/index.m3u8';
+if(Hls.isSupported()) {
+   var video = document.getElementById('video');
+   var hls = new Hls();
+   hls.loadSource(url);
+   hls.attachMedia(video);
+   hls.on(Hls.Events.MANIFEST_PARSED,function() {
+     video.play();
+ });
+}
+ else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+   video.src = url;
+   video.addEventListener('canplay',function() {
+     video.play();
+   });
 
-
-// $ch = curl_init();
-// curl_setopt($ch, CURLOPT_URL,$channelurl2);
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-// curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-//     'User-Agent: Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG200 stbapp ver: 2 rev: 250 Safari/533.3',
-//     'X-User-Agent:  Model: MAG250; Link: WiFi',
-//     // 'Cookie: mac=10:27:BE:5B:64:8B; stb_lang=en; timezone=GMT'
-// ));
-// curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-// curl_setopt($ch, CURLOPT_COOKIE, 'mac=10:27:BE:5B:64:8B; stb_lang=en; timezone=GMT');
-// $response = curl_exec($ch);
-// // echo $response;
-// $channelurl1=$response;
-// $channelurl2=str_replace('Location: ','',$channelurl1);
-// echo $channelurl2;
-// curl_close($ch);
+ }
 
 
+</script>
 
-// $ch = curl_init();
-// curl_setopt($ch, CURLOPT_URL,$channelurl2);
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-// curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-//     'User-Agent: Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG200 stbapp ver: 2 rev: 250 Safari/533.3',
-//     'X-User-Agent:  Model: MAG250; Link: WiFi',
-//     // 'Cookie: mac=10:27:BE:5B:64:8B; stb_lang=en; timezone=GMT'
-// ));
-// curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-// curl_setopt($ch, CURLOPT_COOKIE, 'mac=10:27:BE:5B:64:8B; stb_lang=en; timezone=GMT');
-// $response = curl_exec($ch);
-// echo 'h';
-// echo $response;
-// curl_close($ch);
-
-
-
-
-
-
+</body>
+</html>
 
 
 
