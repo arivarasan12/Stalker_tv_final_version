@@ -1,0 +1,11 @@
+<script>
+     var queryString = window.location.search;
+     var urlParams = new URLSearchParams(queryString);
+     var product = urlParams.get('search')
+     product.replace("%20", "%");
+     product=product.replace("+", "%");
+     product=product.replace(" ", "%");
+     console.log(product);
+     var url='search.php?search='+product;
+     window.location.href = url;
+ </script>
