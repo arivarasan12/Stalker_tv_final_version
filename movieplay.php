@@ -145,6 +145,8 @@ function videovisible() {
     document.getElementById('loading').style.display = 'none'
 }
 
+
+
 var url="<?php
 $tem=$_REQUEST["c"];
 // $tem='/media/55041.mpg';
@@ -281,12 +283,12 @@ $decoded_json = json_decode($response, true);
 $customers = $decoded_json['js'];
 $channelurl= $customers['cmd'];
 
-$channelurl1=str_replace("http://edge237.maddogs.fun:80","http://185.59.223.242",$channelurl);
-$channelurl1=str_replace("http://edge.metaa.tv","http://185.59.223.242",$channelurl1);
+$channelurl1=str_replace("index.m3u8","tracks-v1a1/mono.m3u8",$channelurl);
+// $channelurl1=str_replace("http://edge.metaa.tv","http://185.59.223.242",$channelurl1);
 $channelurl2=$channelurl1;
 echo $channelurl2;
 curl_close($ch);
-?>"
+?>";
 plyr.setup(video);
 
 if(Hls.isSupported()) {
@@ -305,62 +307,6 @@ if(Hls.isSupported()) {
    });
 
  }
-
-
-</script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// }
-?>";
-plyr.setup(video);
-
- if(Hls.isSupported()) {
-    var video = document.getElementById('video');
-    var hls = new Hls();
-    hls.loadSource(url);
-    hls.attachMedia(video);
-    hls.on(Hls.Events.MANIFEST_PARSED,function() {
-      video.play();
-  });
- }
-  else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-    video.src = url;
-    video.addEventListener('canplay',function() {
-      video.play();
-    });
-
-  }
 
 
 </script>
