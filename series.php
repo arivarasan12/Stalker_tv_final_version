@@ -21,6 +21,7 @@
                 $tem = $_REQUEST["c"];
                 // $tem = '/media/36043.mpg';
                 $cat = $_REQUEST["ca"];
+                $screnshot=$_REQUEST["scuri"];
                 // $cat = "109";
                 $int_var = (int)filter_var($tem, FILTER_SANITIZE_NUMBER_INT);
                 $ch = curl_init();
@@ -119,11 +120,14 @@
                 echo $cat;
                 echo '&seasonid=';
                 echo trim(str_replace('\/', '/', $seasonid), '"');
+                echo '&scuri=';
+                echo trim(str_replace('\/', '/', $screnshot),'"');
                 echo '&name=';
                 echo trim($name, '\"');
                 echo '" class="card">';
                 echo '<img class="lazyload" data-src="';
                 echo 'http://eurostar.mix.tm';
+                echo trim(str_replace('\/', '/', $screnshot), '"');
                 echo '" onerror=this.src="http://static2.tgstat.ru/channels/_0/8b/8b2b3c0f2516974f647268e9b5337c60.jpg" style="height: 200px">';
                 echo '<div class="card-body"><p class="card-text"';
                 echo trim($name, '\"');

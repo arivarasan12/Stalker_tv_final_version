@@ -134,6 +134,8 @@ while ($pageno <= $maxpageno && $pageno < 10) {
         echo $category;
         echo '&name=';
         echo $name;
+        echo '&scuri=';
+        echo $screenshot_uri;
         echo '" class="card">';
         echo '<img class="lazyload" data-src="';
         echo 'http://eurostar.mix.tm';

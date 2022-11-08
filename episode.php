@@ -61,22 +61,62 @@
                 curl_close($ch);
 
 
-
-
-
-
-
-                $pageno = 0;
-                $maxpageno = 1;
                 $cat = $_REQUEST["ca"];
                 $movieid = $_REQUEST["c"];
                 $seasondid = $_REQUEST["seasonid"];
+                $screnshot=$_REQUEST["scuri"];
                 // $cat ='1074';
-                // $movieid ='62227';
-                // $seasondid ='10115';
-                while ($pageno <= $maxpageno && $pageno < 25) {
+                // $movieid ='61692';
+                // $seasondid ='9849';
+
+                $pageno=0;
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, 'http://eurostar.mix.tm/stalker_portal/server/load.php?type=vod&action=get_ordered_list&category=' . $cat . '&movie_id=' . $movieid . '&season_id=' . $seasondid . '&sortby=addede&pisode_id=0&p=' . $pageno);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                    'User-Agent: Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG200 stbapp ver: 2 rev: 250 Safari/533.3',
+                    'X-User-Agent:  Model: MAG250; Link: WiFi',
+                    'Referer:  http://eurostar.mix.tm/stalker_portal/c/',
+                    'Authorization: Bearer ' . $token,
+                    'Accept:  /',
+                    'Host:  eurostar.mix.tm',
+                    'Connection:  Keep-Alive',
+
+                    // 'Cookie: mac=10:27:BE:5B:64:8B; stb_lang=en; timezone=GMT'
+                ));
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_COOKIE, 'mac=10:27:BE:5B:64:8B; stb_lang=en; timezone=GMT');
+                $resp = curl_exec($ch);
+                $decoded_json = json_decode($resp, true);
+                $customers = $decoded_json['js'];
+                $total_items = $customers['total_items'];
+                $max_page_items = $customers["max_page_items"];
+                $maxpageno = ceil($total_items / $max_page_items);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                $pageno = $maxpageno;
+                // $maxpageno = 1;
+         
+                while ($pageno >=0 && $pageno >10) {
                     $ch = curl_init();
-                    curl_setopt($ch, CURLOPT_URL, 'http://eurostar.mix.tm/stalker_portal/server/load.php?type=vod&action=get_ordered_list&category=' . $cat . '&movie_id=' . $movieid . '&season_id=' . $seasondid . '&episode_id=0&p=' . $pageno . '&sortby=added');
+                    curl_setopt($ch, CURLOPT_URL, 'http://eurostar.mix.tm/stalker_portal/server/load.php?type=vod&action=get_ordered_list&category=' . $cat . '&movie_id=' . $movieid . '&season_id=' . $seasondid . '&sortby=addede&pisode_id=0&p=' . $pageno);
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
                     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -109,7 +149,7 @@
                         $token1 = $customers["data"];
                         $token2 = $token1[0];
                         $json2 = json_encode($token2);
-                        for ($x = 0; $x < sizeof($token1); $x++) {
+                        for ($x = sizeof($token1)-1; $x >=0; $x--) {
                             $tempvar = $token1[$x];
                             $name = $tempvar['name'];
                             // $screenshot_uri = $tempvar["screenshot_uri"];
@@ -128,20 +168,19 @@
                             echo $seasondid;
                             echo '&name=';
                             echo $name;
-                            
                             echo '" class="card">';
                             echo '<img class="lazyload" data-src="';
                             echo 'http://eurostar.mix.tm';
-                            // $screenshot_uri=json_encode($screenshot_uri);
-                            // echo trim(str_replace('\/','/',$screenshot_uri),'"');
+                            $screenshot_uri=json_encode($screnshot);
+                            echo trim(str_replace('\/','/',$screenshot_uri),'"');
                             echo '" onerror=this.src="http://static2.tgstat.ru/channels/_0/8b/8b2b3c0f2516974f647268e9b5337c60.jpg" style="height: 200px">';
                             echo '<div class="card-body"><p class="card-text"';
                             echo trim(str_replace('\/', '/', $name), '"');
                             echo ' </p></div></a></div>';
                         }
-                        echo $pageno;
-                        echo $maxpageno;
-                        $pageno = $pageno + 1;
+                        // echo $pageno;
+                        // echo $maxpageno;
+                        $pageno = $pageno + -1;
                     }
                 }
                 ?>
