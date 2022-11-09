@@ -114,7 +114,7 @@
                 $pageno = $maxpageno;
                 // $maxpageno = 1;
          
-                while ($pageno >=0 && $pageno >10) {
+                while ($pageno >=0) {
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL, 'http://eurostar.mix.tm/stalker_portal/server/load.php?type=vod&action=get_ordered_list&category=' . $cat . '&movie_id=' . $movieid . '&season_id=' . $seasondid . '&sortby=addede&pisode_id=0&p=' . $pageno);
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
