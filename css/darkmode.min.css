@@ -415,8 +415,8 @@ mark,
   margin: 15px;
   padding-bottom: 10px;
   font-family: 'Holtwood One SC', serif;
-  background-color: #fff000;
-  background-image: linear-gradient(315deg, #fff000 0%, #ed008c 74%);
+  background-color: #ff0000;
+  background-image: linear-gradient(315deg, #ff0000 0%, #ed0020 74%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
