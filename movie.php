@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
-    <title><?php echo $_REQUEST["name"]; ?></title>
+    <title>MOVIES</title>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/37fVLxB/f4027915ec9335046755d489a14472f2.png">
     <meta name="robots" content="noindex" />
     <link rel="stylesheet" href="css/darkmode.min.css">
@@ -12,7 +12,7 @@
 
 <body data-new-gr-c-s-check-loaded="14.1012.0" data-gr-ext-installed="">
     <div id="jtvh1"><a href="https://github.com/arivarasan12">
-            <h1><?php echo $_REQUEST["name"]; ?> </h1>
+            <h1>MOVIES </h1>
     </div></a>
     <div id="content">
         <div class="container">
