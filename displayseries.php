@@ -12,7 +12,7 @@
 
 <body data-new-gr-c-s-check-loaded="14.1012.0" data-gr-ext-installed="">
     <div id="jtvh1"><a href="https://github.com/arivarasan12">
-            <h1><?php echo $_REQUEST["name"]; ?> </h1>
+            <h1>SERIES</h1>
     </div></a>
     <div id="content">
         <div class="container">
