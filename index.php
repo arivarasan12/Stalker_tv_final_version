@@ -375,7 +375,7 @@
                   </div>
                 </div>
                 <div class="d-flex align-items-center r-mb-23 mt-4" data-animation-in="fadeInUp" data-delay-in="1.2">
-                  <a href="http://localhost/movieplay.php?c=/media/192906.mpg" class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Play Now</a>
+                  <a href="movieplay.php?c=/media/192906.mpg" class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Play Now</a>
                   <a href="#" class="btn btn-link">More Details</a>
                 </div>
               </div>
