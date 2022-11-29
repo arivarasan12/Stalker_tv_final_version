@@ -218,7 +218,7 @@ curl_close($ch);
 ?>;
 plyr.setup(video);
 
- if(Hls.notSupported()) {
+ if(Hls.isSupported()) {
     var video = document.getElementById('video');
     var hls = new Hls();
     hls.loadSource(url);
